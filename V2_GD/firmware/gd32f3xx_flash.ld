@@ -1,3 +1,6 @@
+ENTRY(Reset_Handler)
+
+
 /* memory map */
 MEMORY
 {
@@ -5,11 +8,10 @@ MEMORY
   RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 8K
 }
 
-ENTRY(Reset_Handler)
-
 SECTIONS
 {
-  __stack_size = DEFINED(__stack_size) ? __stack_size : 2K;
+  _Min_Stack_Size = 0x400; /* required amount of stack */
+  _Min_Heap_Size = 0x200;      /* required amount of heap  */
 
 /* ISR vectors */
   .vectors :
@@ -17,8 +19,6 @@ SECTIONS
     . = ALIGN(4);
     KEEP(*(.vectors))
     . = ALIGN(4);
-    __Vectors_End = .;
-    __Vectors_Size = __Vectors_End - __gVectors;
   } >FLASH
 
   .text :
@@ -106,22 +106,23 @@ SECTIONS
     *(.bss*)
     *(COMMON)
     . = ALIGN(4);
-    /* the symbol ¡®
-    _ebss¡¯ will be defined at the bss section end */
     _ebss = .;
     __bss_end__ = _ebss;
   } >RAM
 
- . = ALIGN(8);
-  PROVIDE ( end = _ebss );
-  PROVIDE ( _end = _ebss );
-
-  .stack ORIGIN(RAM) + LENGTH(RAM) - __stack_size :
+  /* User_heap_stack section, used to check that there is enough RAM left */
+  ._user_heap_stack :
   {
+    . = ALIGN(8);
+    PROVIDE ( end = . );
+    PROVIDE ( _end = . );
+    . = . + _Min_Heap_Size;
     PROVIDE( _heap_end = . );
-    . = __stack_size;
-    PROVIDE( _sp = . );
+    . = . + _Min_Stack_Size;
+    PROVIDE( _sp = . ); 
   } >RAM AT>RAM
+
+
 }
 
  /* input sections */
