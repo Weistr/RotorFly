@@ -1,8 +1,8 @@
 /* memory map */
 MEMORY
 {
-  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 16K
-  RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 4K
+  FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 64K
+  RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 8K
 }
 
 ENTRY(Reset_Handler)
@@ -106,7 +106,8 @@ SECTIONS
     *(.bss*)
     *(COMMON)
     . = ALIGN(4);
-    /* the symbol ¡®_ebss¡¯ will be defined at the bss section end */
+    /* the symbol ¡®
+    _ebss¡¯ will be defined at the bss section end */
     _ebss = .;
     __bss_end__ = _ebss;
   } >RAM
