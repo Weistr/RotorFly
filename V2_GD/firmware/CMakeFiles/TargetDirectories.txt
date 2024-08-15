@@ -1,3 +1,0 @@
-C:/Users/15612/Documents/Project/RotorFly/V2_GD/firmware/CMakeFiles/RotorFly_fw.elf.dir
-C:/Users/15612/Documents/Project/RotorFly/V2_GD/firmware/CMakeFiles/edit_cache.dir
-C:/Users/15612/Documents/Project/RotorFly/V2_GD/firmware/CMakeFiles/rebuild_cache.dir

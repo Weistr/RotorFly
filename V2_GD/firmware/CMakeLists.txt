@@ -1,14 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-#此文件从模板自动生成! 请勿更改!
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
 cmake_minimum_required(VERSION 3.10)
@@ -81,7 +70,7 @@ ADD_DEFINITIONS(
 )
 #请在此处此处添加.c文件目录
 file(GLOB_RECURSE SOURCES 
-    "Lib/GD32_Lib/CMSIS/GD/GD32F3x0/Source/GCC/*.S"    
+    "Lib/GD32_Lib/CMSIS/GD/GD32F3x0/Source/GCC/*.s"    
     "Lib/GD32_Lib/CMSIS/GD/GD32F3x0/Source/*.c"
     "Lib/GD32_Lib/GD32F3x0_standard_peripheral/Source/*.c"
     "drivers/*.*"
