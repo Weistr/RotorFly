@@ -149,4 +149,5 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
     delay_decrement();
+    Task_Marks_Handler_Callback();
 }

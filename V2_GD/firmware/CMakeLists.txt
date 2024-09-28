@@ -73,12 +73,12 @@ file(GLOB_RECURSE SOURCES
     "Lib/GD32_Lib/CMSIS/GD/GD32F3x0/Source/GCC/*.s"    
     "Lib/GD32_Lib/CMSIS/GD/GD32F3x0/Source/*.c"
     "Lib/GD32_Lib/GD32F3x0_standard_peripheral/Source/*.c"
-    "drivers/*.*"
-    "App/*.*"
+    "Drivers/*.c*"
+    "App/*.c*"
 )
 
 
-set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/gd32f3x0_flash.ld)
+set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/gd32f3xx_flash.ld)
 
 add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map)
 add_link_options(-mcpu=cortex-m4 -mthumb -mthumb-interwork)
